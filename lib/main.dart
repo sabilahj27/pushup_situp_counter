@@ -72,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Koneksi Bluetooth'),
-        backgroundColor: Color(0xFF3C4E82),
+        title: Text(''),
+        backgroundColor: Color(0xFFBDCCEE0),
         actions: [
           IconButton(
             icon: Icon(Icons.history),
