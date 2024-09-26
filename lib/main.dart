@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pushup_and_situp_countere/cek_bt.dart';
+import 'package:pushup_and_situp_countere/history.dart';
 import 'package:pushup_and_situp_countere/mode.dart';
 
 void main() {
@@ -42,6 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _goBT() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BluetoothPage()),
+    );
+  }
+
   void _showResetModal() {
     showDialog(
       context: context,
@@ -78,7 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.history),
             onPressed: () {
-              // Implement navigation to history page here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HistoryPage()),
+              );
             },
           ),
         ],
@@ -113,7 +125,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 foregroundColor: Colors.white,
               ),
               child: Text('Hubungkan'),
-              onPressed: _connectBLE,
+              // onPressed: _connectBLE,
+              onPressed: _goBT,
             ),
             SizedBox(height: 10),
             Text(

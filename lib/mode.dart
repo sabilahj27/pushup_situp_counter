@@ -152,7 +152,7 @@ class _ModePageState extends State<ModePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        // title: Text(''),
         backgroundColor: Color(0xFFBDCCEE0),
         actions: [
           IconButton(

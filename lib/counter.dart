@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:pushup_and_situp_countere/history.dart';
 
 class CounterPage extends StatefulWidget {
   final String mode;
@@ -26,14 +27,6 @@ class _CounterPageState extends State<CounterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '',
-          style: TextStyle(
-            fontSize: 24,
-            fontFamily: 'PoppinsBold',
-            color: Color(0xFF3C4E82), // #3c4e82
-          ),
-        ),
         backgroundColor: Color(0xFFBDCCEE0),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -59,6 +52,90 @@ class _CounterPageState extends State<CounterPage> {
               Text(
                 _modeTitle,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Card(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            'Gerakan Benar',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Container(
+                            width: 165,
+                            height: 165,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF0B8D7C), // #0b8d7c
+                              borderRadius: BorderRadius.circular(90),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  spreadRadius: 0,
+                                  blurRadius: 10,
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Text(
+                                _counter.toString(),
+                                style: TextStyle(
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 20),
+                      Column(
+                        children: [
+                          Text(
+                            'Gerakan Salah',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Container(
+                            width: 165,
+                            height: 165,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFDC2D59), // #dc2d59
+                              borderRadius: BorderRadius.circular(90),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  spreadRadius: 0,
+                                  blurRadius: 10,
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Text(
+                                _wrong.toString(),
+                                style: TextStyle(
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _formatTime(_countdownTime),
+                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
               Row(
@@ -92,91 +169,14 @@ class _CounterPageState extends State<CounterPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        'Gerakan Benar',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Container(
-                        width: 165,
-                        height: 165,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF0B8D7C), // #0b8d7c
-                          borderRadius: BorderRadius.circular(90),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 0,
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                          child: Text(
-                            _counter.toString(),
-                            style: TextStyle(
-                              fontSize: 60,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    children: [
-                      Text(
-                        'Gerakan Salah',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Container(
-                        width: 165,
-                        height: 165,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFDC2D59), // #dc2d59
-                          borderRadius: BorderRadius.circular(90),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 0,
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                          child: Text(
-                            _wrong.toString(),
-                            style: TextStyle(
-                              fontSize: 60,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Text(
-                _formatTime(_countdownTime),
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-              ),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _saveData,
-        child: Icon(Icons.save),
+        backgroundColor: Color(0xFF2C8BBF),
+        child: Icon(Icons.save, color: Colors.white,),
       ),
     );
   }
@@ -219,6 +219,9 @@ class _CounterPageState extends State<CounterPage> {
   }
 
   void _saveData() {
-    // Kosongkan fungsi ini untuk sementara
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HistoryPage()),
+    );
   }
 }
